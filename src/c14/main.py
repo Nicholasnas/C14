@@ -18,11 +18,12 @@ async def get_persons(pokemon_name:str):
     async with httpx.AsyncClient() as client:
         
         response = await client.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_name}')
-        
+    
         if response.status_code != 200:
             raise HTTPException(status_code=response.status_code, detail="Pokemon não encontrado")
         
         try:
+            
             return response.json()
         except Exception:
             raise HTTPException(status_code=500, detail="Resposta da api errada")
