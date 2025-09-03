@@ -1,34 +1,29 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+import requests
 import uvicorn
-import httpx
-
 
 app = FastAPI()
 
+def get_address_by_cep(cep: str):
+    if not cep.isdigit() or len(cep) != 8:
+        raise HTTPException(status_code=400, detail="CEP inválido")
 
-@app.get('/')
-async def hello_api():
-    content = "<h1>Api para obtenção de dados de pokemons</h1>"
-    return HTMLResponse(content)
-    
+    url = f"https://viacep.com.br/ws/{cep}/json/"
+    response = requests.get(url)
 
-@app.get("/{pokemon_name}")
-async def get_persons(pokemon_name:str):
-    async with httpx.AsyncClient() as client:
-        
-        response = await client.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_name}')
-    
-        if response.status_code != 200:
-            raise HTTPException(status_code=response.status_code, detail="Pokemon não encontrado")
-        
-        try:
-            
-            return response.json()
-        except Exception:
-            raise HTTPException(status_code=500, detail="Resposta da api errada")
-            
- 
+    if response.status_code != 200:
+        raise HTTPException(status_code=500, detail="Erro na consulta externa")
+
+    data = response.json()
+    if "erro" in data:
+        raise HTTPException(status_code=404, detail="CEP não encontrado")
+
+    return data
+
+@app.get("/cep/{cep}")
+def read_cep(cep: str):
+    return get_address_by_cep(cep)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run(app='main:app', host="0.0.0.0", port=8000, reload=True)
+

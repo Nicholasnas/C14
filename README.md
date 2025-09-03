@@ -1,18 +1,36 @@
-# Api para obter os dados de herois do pokemon
+# 📍 API de Consulta de CEP
 
-## Uma simples API que realiza o request a uma API terceira que retorna as informações de um personagem de um pokemon
+Este projeto é uma **API desenvolvida com FastAPI** que consulta os dados de um endereço a partir de um **CEP** brasileiro.  
+A API utiliza a [ViaCEP](https://viacep.com.br) como fonte de dados externa.
 
-## Biblioteca Utilizadas:
-- Httpx
-- FastAPI
+---
 
+## ✨ Funcionalidades
 
-## Usando poetry:
-Rode esses comandos:
+- Consulta informações de endereço a partir do CEP.
+- Valida formato de CEP (apenas números e 8 dígitos).
+- Retorna mensagens de erro apropriadas para:
+  - CEP inválido.
+  - CEP não encontrado.
+  - Erro de comunicação com o serviço externo.
 
-### 1 - poetry install
-### 2 - poetry env activate
-### 3 - poetry run uvicorn main:app --reload
+---
 
+## 🛠️ Tecnologias Utilizadas
 
+- [Python 3.11+](https://www.python.org/)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Uvicorn](https://www.uvicorn.org/)
+- [Requests](https://docs.python-requests.org/)
+- [Poetry](https://python-poetry.org/) (gerenciador de dependências)
+- [unittest](https://docs.python.org/3/library/unittest.html) (testes automatizados)
 
+---
+
+## 📦 Instalação
+
+Clone o repositório e entre na pasta do projeto:
+
+```bash
+git clone https://github.com/Nicholasnas/C14
+cd seu-repo
