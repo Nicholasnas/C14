@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 2. Dar Permissão de Execução ao Script
-        run: chmod +x scripts/notify.sh
+        run: chmod +x scripts/shell.sh
 
       - name: 3. Executar Script de Notificação
         run: ./notify.sh ${{ needs.test.result }}
