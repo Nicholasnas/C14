@@ -34,7 +34,7 @@ jobs:
       - name: 5. Executar Testes
         run: |
           cd tests
-          poetry run python -m unittest tests/test_api.py -v
+          poetry run python -m unittest test_api.py -v
 
   build:
     name: Empacotamento (Build)
