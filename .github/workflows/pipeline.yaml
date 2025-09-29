@@ -73,6 +73,4 @@ jobs:
         run: chmod +x scripts/shell.sh
 
       - name: 3. Executar Script de Notificação
-        run: ./shell.sh ${{ needs.test.result }}
-        env:
-          EMAIL_TO: ${{ env.EMAIL_TO }}
+        run: sh scripts/shell.sh 
