@@ -1,3 +1,5 @@
+[![Consulta CEP poetry](https://github.com/Nicholasnas/C14/actions/workflows/pipeline.yaml/badge.svg)](https://github.com/Nicholasnas/C14/actions/workflows/pipeline.yaml)
+
 # 📍 API de Consulta de CEP
 
 Este projeto é uma **API desenvolvida com FastAPI** que consulta os dados de um endereço a partir de um **CEP** brasileiro.  
