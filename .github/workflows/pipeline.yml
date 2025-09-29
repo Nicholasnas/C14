@@ -28,15 +28,15 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       # Requisito: Instalar software via script/command
-      - name: 3. Instalar Poetry e Dependências
+      - name: 3. Instalar Poetry e Dependências (Incluindo o projeto root)
         run: |
           pip install poetry
-          # Instala dependências do projeto e de desenvolvimento
-          poetry install
+          # CORREÇÃO: Usar 'poetry install --with dev --sync' para garantir que o pytest e o módulo 'c14' sejam instalados corretamente.
+          poetry install --with dev --sync
           
       - name: 4. Rodar Testes Unitários e Gerar Relatório XML
-        # Assume que você configurou 'pytest-junitxml' nas dependências de desenvolvimento do Poetry
-        run: poetry run pytest tests/ --junitxml=test-report.xml
+        # Comando Pytest mais seguro, usando o path do arquivo de testes
+        run: poetry run pytest tests/test_main.py --junitxml=test-report.xml
 
       # Requisito: Armazenar Relatório de Testes como Artefato
       - name: 5. 📦 Upload do Relatório de Testes
