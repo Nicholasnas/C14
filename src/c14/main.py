@@ -2,7 +2,10 @@ from fastapi import FastAPI, HTTPException
 import requests
 import uvicorn
 
-app = FastAPI()
+app = FastAPI(
+    title="Validador de CEP API",
+    version="1.0.0"
+)
 
 def get_address_by_cep(cep: str):
     if not cep.isdigit() or len(cep) != 8:

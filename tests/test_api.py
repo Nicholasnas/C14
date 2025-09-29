@@ -14,18 +14,13 @@ class TestAPI(unittest.TestCase):
         mock_response.status_code = 200
         mock_response.json.return_value = {
                 "cep": "37542-000",
-                "logradouro": "",
-                "complemento": "",
-                "unidade": "",
-                "bairro": "",
+                "logradouro": "Rua Avenida Prefeito Gabriel Rosa",
+                "bairro": "Centro",
                 "localidade": "Estiva",
                 "uf": "MG",
                 "estado": "Minas Gerais",
                 "regiao": "Sudeste",
-                "ibge": "3124500",
-                "gia": "",
                 "ddd": "35",
-                "siafi": "4489"
             }
         mock_get.return_value = mock_response
         
