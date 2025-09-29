@@ -37,6 +37,9 @@ jobs:
 
       - name: Instalar dependências
         run: poetry install --no-interaction --no-root
+      
+      - name: Mudar de diretorio
+        run: cd tests/
 
       - name: Rodar testes unitários
         run: poetry run python -m unittest discover -v
